@@ -1,0 +1,128 @@
+
+entity User {
+	nom String required,
+    prenom String ,
+    email String required,
+    password String required,
+    username String required
+}
+
+entity Role {
+	nom String
+}
+entity Previlige {
+	nom String,
+    description String
+}
+entity Historique {
+	dateArosage Date,
+    qttEau Int
+}
+entity TypeSol {
+	libelle Int,
+    type String
+}
+entity Parcelle {
+	surface Float,
+    photo Int
+}
+entity Ferm {
+	numParcelle Int,
+    photo Int
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Alerte {
+	humidite Float
+	temperature Float
+	luminosite Float
+	
+}
+entity Affectation {
+	dateDebut Date
+	dateFin Date
+}
+entity Grandeur {
+	type String required
+	valeur String required
+	date Date
+	
+}
+entity Plantage {
+	date Date
+	nbrPlate Int
+}
+entity Plante {
+	lebelle String required
+	photo Int
+	racin String
+}
+entity TypePlant {
+	lebelle String required
+	humiditeMax Float required
+	humiditeMin Float required
+    temperature Float required
+    luminisite Float required
+}
+entity Boitier {
+		
+}
+entity Brache {
+	branche Int	 required
+}
+entity Capteur {
+	type String required
+	image Int 
+	description String
+}
+relationship OneToOne {
+	User to Role
+}
+relationship OneToOne {
+	Role to Previlige
+}
+relationship OneToOne {
+	User to Ferm
+}
+relationship OneToOne {
+	Historique to Parcelle
+}
+relationship OneToOne {
+	Parcelle to Alerte
+}
+relationship OneToOne {
+	Parcelle to TypeSol
+}
+relationship OneToOne {
+	Parcelle to Ferm
+}
+relationship OneToOne {
+	Parcelle to Grandeur
+}
+relationship OneToOne {
+	Parcelle to Plantage
+}
+relationship OneToOne {
+	Plantage to Plante
+}
+relationship OneToOne {
+	Plante to TypePlant
+}
+relationship OneToOne {
+	Parcelle to Affectation
+}
+relationship OneToOne {
+	Affectation to Boitier
+}
+relationship OneToOne {
+	Boitier to Alerte
+}
+relationship OneToOne {
+	Boitier to Brache
+}
+relationship OneToOne {
+	Brache to Capteur
+}
+
+
